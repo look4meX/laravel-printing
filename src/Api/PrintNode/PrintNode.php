@@ -21,6 +21,11 @@ class PrintNode
         return $this;
     }
 
+    public function scale(int $computerId): ?Entity\Scale
+    {
+        return (new Requests\ScaleRequest($this->apiKey))->response($computerId);
+    }
+
     public function computers(?int $limit = null, ?int $offset = null, ?string $dir = null): Entity\Computers
     {
         return (new Requests\ComputersRequest($this->apiKey))->response($limit, $offset, $dir);
